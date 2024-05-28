@@ -24,6 +24,11 @@ public class CumRecombobulator : NeedStation {
             churnable.transform.position = recombobulateLocation.position;
             churnable.transform.rotation = Quaternion.identity;
             if (churnable is CharacterBase churnableCharacter) {
+                if (churnableCharacter.IsPlayer())
+                {
+                    OrbitCamera.RemoveConfiguration(churnableCharacter.churnedPlayerCamera);
+                }
+                
                 if (churnableCharacter.voreContainer is Balls balls) {
                     var ballsBody = balls.GetStorageTransform();
                     ballsBody.position = recombobulateLocation.position + Vector3.up;

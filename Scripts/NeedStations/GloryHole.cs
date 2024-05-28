@@ -62,7 +62,7 @@ public class GloryHole : BreedingStand {
             var thrust = GetThrustValue();
             
             float arbitraryAdjustment = 1.5f;
-            Vector3 correctionForce = simulation.GetCorrrectiveForce() * arbitraryAdjustment;
+            Vector3 correctionForce = simulation.GetCorrectiveForce() * arbitraryAdjustment;
             if (thrust.magnitude >= 1f) {
                 correctionForce = Vector3.ProjectOnPlane(correctionForce, beingUsedBy.transform.TransformDirection(thrust.normalized));
             }

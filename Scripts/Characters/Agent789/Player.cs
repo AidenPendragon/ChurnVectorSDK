@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using UnityEngine.VFX;
 using Random = UnityEngine.Random;
 
@@ -16,7 +17,7 @@ public partial class CharacterBase {
     private GameObject interactVisualization;
 
     private TicketLock.Ticket cutsceneLock;
-    
+    public OrbitCameraBasicConfiguration churnedPlayerCamera;
 
     public delegate void SeenAction(KnowledgeDatabase.Knowledge knowledge, CharacterBase by);
     public event SeenAction seen;
@@ -41,6 +42,7 @@ public partial class CharacterBase {
         pivot.SetInfo(Vector2.one * 0.5f, 4f, 65f);
         configuration.SetPivot(pivot);
         OrbitCamera.AddConfiguration(configuration);
+        churnedPlayerCamera = configuration;
         CharacterDetector.RemoveTrackingGameObjectFromAll(gameObject);
     }
 

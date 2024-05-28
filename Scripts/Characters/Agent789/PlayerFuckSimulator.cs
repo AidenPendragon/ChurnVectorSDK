@@ -1,13 +1,16 @@
 using DPG;
+using NeedStations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FuckSimulation {
+public class PlayerFuckSimulator: IFuckSimulator {
     private CatmullSpline cachedSpline;
     public Vector3 GetHipPosition() {
         return currentFrame.hipPosition;
     }
-    public Vector3 GetCorrrectiveForce() {
+
+    public Vector3 GetCorrectiveForce()
+    {
         return currentFrame.correctiveForce;
     }
 
@@ -54,7 +57,7 @@ public class FuckSimulation {
     private Camera cam;
     private Animator penetratorAnimator;
 
-    public FuckSimulation(Camera cam, Transform hipTransform, Penetrable targetHole, Penetrator targetPenetrator, Animator penetratorAnimator) {
+    public PlayerFuckSimulator(Camera cam, Transform hipTransform, Penetrable targetHole, Penetrator targetPenetrator, Animator penetratorAnimator) {
         this.cam = cam;
         this.penetratorAnimator = penetratorAnimator;
         hole = targetHole;
